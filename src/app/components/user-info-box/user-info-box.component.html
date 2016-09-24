@@ -1,0 +1,32 @@
+<div class="ui segment stacked blue">
+  <h3 class="ui header">
+     <img src="{{user.avatar}}" class="ui image tiny floated left">
+     <a href="/#/user/{{user.displayName}}">{{user.displayName}}</a>
+  </h3>
+  <br><br>
+  <br>
+   <div class="ui mini statistic floated">
+     <div class="label">
+       Posts
+     </div>
+     <div class="value">
+       {{user.posts.length}}
+     </div>
+   </div>
+   <div class="ui mini statistic floated">
+     <div class="label">
+      Following
+     </div>
+     <div class="value">
+      {{user.following}}
+     </div>
+   </div>
+   <div class="ui mini statistic floated">
+     <div class="label">
+      Followers
+     </div>
+     <div class="value">
+      {{user.followers}}
+     </div>
+   </div>
+</div>

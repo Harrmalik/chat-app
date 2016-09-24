@@ -8,17 +8,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-export var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Welcome to the new Chat Application';
+export var ChatBoxComponent = (function () {
+    function ChatBoxComponent() {
+        this.displayName = 'Harrmalik';
     }
-    AppComponent = __decorate([
+    ChatBoxComponent.prototype.ngOnInit = function () {
+    };
+    ChatBoxComponent = __decorate([
         Component({
-            selector: 'app-root',
-            template: "\n      <article class=\"four wide column\">\n        <user-info-box></user-info-box>\n      </article>\n\n      <article class=\"eight wide column\">\n        <chat-box></chat-box>\n        <chat-feed></chat-feed>\n      </article>\n  "
+            selector: 'chat-box',
+            templateUrl: './chat-box.component.html',
+            styleUrls: ['./chat-box.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], ChatBoxComponent);
+    return ChatBoxComponent;
 }());
-//# sourceMappingURL=../../../src/app/app.component.js.map
+//# sourceMappingURL=../../../../../src/app/components/chat-box/chat-box.component.js.map

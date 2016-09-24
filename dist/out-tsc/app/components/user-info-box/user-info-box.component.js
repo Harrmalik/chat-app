@@ -8,17 +8,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-export var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Welcome to the new Chat Application';
+export var UserInfoBoxComponent = (function () {
+    function UserInfoBoxComponent() {
+        this.user = {
+            displayName: 'Harrmalik',
+            userName: 'Malik Harrison',
+            avatar: 'http://lorempixel.com/100/100/people/8/',
+            posts: [],
+            following: 1,
+            followers: 0
+        };
     }
-    AppComponent = __decorate([
+    UserInfoBoxComponent.prototype.ngOnInit = function () {
+    };
+    UserInfoBoxComponent = __decorate([
         Component({
-            selector: 'app-root',
-            template: "\n      <article class=\"four wide column\">\n        <user-info-box></user-info-box>\n      </article>\n\n      <article class=\"eight wide column\">\n        <chat-box></chat-box>\n        <chat-feed></chat-feed>\n      </article>\n  "
+            selector: 'user-info-box',
+            templateUrl: './user-info-box.component.html',
+            styleUrls: ['./user-info-box.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], UserInfoBoxComponent);
+    return UserInfoBoxComponent;
 }());
-//# sourceMappingURL=../../../src/app/app.component.js.map
+//# sourceMappingURL=../../../../../src/app/components/user-info-box/user-info-box.component.js.map
