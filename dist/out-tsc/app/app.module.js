@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { ChatFeedComponent } from './components/chat-feed/chat-feed.component';
 import { ChatBoxComponent } from './components/chat-box/chat-box.component';
 import { UserInfoBoxComponent } from './components/user-info-box/user-info-box.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +25,8 @@ export var AppModule = (function () {
                 AppComponent,
                 ChatFeedComponent,
                 ChatBoxComponent,
-                UserInfoBoxComponent
+                UserInfoBoxComponent,
+                NavBarComponent
             ],
             imports: [
                 BrowserModule,

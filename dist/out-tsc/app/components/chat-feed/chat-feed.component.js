@@ -8,36 +8,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { PostsService } from '../../services/posts.service';
 export var ChatFeedComponent = (function () {
-    function ChatFeedComponent() {
-        this.posts = [{
-                profileImage: 'http://lorempixel.com/100/100/people/8/',
-                createdBy: 'Malik Harrison',
-                displayName: 'Harrmalik',
-                createdAt: "34m ago",
-                displayText: "This is sample text",
-                replies: 1,
-                reposts: 2,
-                likes: 3
-            }, {
-                profileImage: 'http://lorempixel.com/100/100/people/7/',
-                createdBy: 'Malik Harrison',
-                displayName: 'Harrmalik',
-                createdAt: "34m ago",
-                displayText: "This is sample text",
-                replies: 1,
-                reposts: 2,
-                likes: 3
-            }, {
-                profileImage: 'http://lorempixel.com/100/100/people/9/',
-                createdBy: 'Malik Harrison',
-                displayName: 'Harrmalik',
-                createdAt: "34m ago",
-                displayText: "This is sample text",
-                replies: 1,
-                reposts: 2,
-                likes: 3
-            }];
+    function ChatFeedComponent(postsService) {
+        this.postsService = postsService;
+        this.posts = postsService.getPosts();
     }
     ChatFeedComponent.prototype.ngOnInit = function () {
     };
@@ -45,9 +20,10 @@ export var ChatFeedComponent = (function () {
         Component({
             selector: 'chat-feed',
             templateUrl: './chat-feed.component.html',
-            styleUrls: ['./chat-feed.component.css']
+            styleUrls: ['./chat-feed.component.css'],
+            providers: [PostsService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [PostsService])
     ], ChatFeedComponent);
     return ChatFeedComponent;
 }());

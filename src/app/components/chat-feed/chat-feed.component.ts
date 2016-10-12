@@ -1,41 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {PostsService} from '../../services/posts.service';
 
 @Component({
   selector: 'chat-feed',
   templateUrl: './chat-feed.component.html',
-  styleUrls: ['./chat-feed.component.css']
+  styleUrls: ['./chat-feed.component.css'],
+  providers: [PostsService]
 })
 export class ChatFeedComponent implements OnInit {
-    posts = [{
-        profileImage: 'http://lorempixel.com/100/100/people/8/',
-        createdBy: 'Malik Harrison',
-        displayName: 'Harrmalik',
-        createdAt: "34m ago",
-        displayText: "This is sample text",
-        replies: 1,
-        reposts: 2,
-        likes: 3
-    },{
-        profileImage: 'http://lorempixel.com/100/100/people/7/',
-        createdBy: 'Malik Harrison',
-        displayName: 'Harrmalik',
-        createdAt: "34m ago",
-        displayText: "This is sample text",
-        replies: 1,
-        reposts: 2,
-        likes: 3
-    },{
-        profileImage: 'http://lorempixel.com/100/100/people/9/',
-        createdBy: 'Malik Harrison',
-        displayName: 'Harrmalik',
-        createdAt: "34m ago",
-        displayText: "This is sample text",
-        replies: 1,
-        reposts: 2,
-        likes: 3
-    }]
+    posts;
 
-    constructor() { }
+    constructor(public postsService: PostsService) {
+        this.posts = postsService.getPosts();
+    }
 
     ngOnInit() {
     }
