@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif; }
+
+#chat-home, #chat-home > div {
+  height: 100% !important; }
+
+section.main.ui.grid {
+  min-height: 95%;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  position: relative; }
+
+article {
+  margin: 1em 0; }
+
+a {
+  color: #00B7FF; }
+
+form.ui.form.fluid.segment.stacked.blue {
+  height: 150px; }
+
+footer {
+  text-align: center;
+  width: 100%;
+  background-color: #333333; }
+
+/*# sourceMappingURL=style.css.map */
