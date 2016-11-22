@@ -1,63 +1,75 @@
 import React from 'react'
+import ChatBox from './ChatBox'
+import Post from './Post'
+import _ from 'lodash'
 
 var ChatFeed = React.createClass({
-  render() {
-    return (
-      <article className="eight wide column">
-        <form className="ui form fluid segment stacked blue">
-          <div className="required field">
-             <h4>Harrmalik says</h4>
-          </div>
-          <div className="field">
-            <div className="ui icon input">
-              <input required type="text" placeholder="Whats on your mind?" />
-              <i className="chat icon"></i>
-            </div>
-          </div>
-          <input className="ui button blue right floated" type="submit" value="Send" id="send" />
-        </form>
+    getInitialState() {
+        return {
+            posts: []
+        }
+    },
+    getPosts() {
+        // Some API call to get posts
+        this.setState({posts: [
+            {
+                id: 1,
+                name: "Malik Harrison",
+                displayName: "Harrmalik",
+                avatar: "http://lorempixel.com/100/100/people/8/",
+                text: "This is sample text",
+                createdAt: "34m",
+                replies: 1,
+                reposts: 2,
+                likes: 3
+            },
+            {
+                id: 2,
+                name: "Inner Me",
+                displayName: "Inner Me",
+                avatar: "http://lorempixel.com/100/100/people/7/",
+                text: "DELETE ALL OF IT",
+                createdAt: "34m",
+                replies: 1,
+                reposts: 2,
+                likes: 3
+            },
+            {
+                id: 3,
+                name: "Malik Harrison",
+                displayName: "Harrmalik",
+                avatar: "http://lorempixel.com/100/100/people/8/",
+                text: "Chill thats savage lol 😂",
+                createdAt: "34m",
+                replies: 1,
+                reposts: 2,
+                likes: 3
+            },
+        ]})
+    },
+    componentWillMount() {
+        this.getPosts()
+    },
+    render() {
+        var component = this
+        return (
+          <article className="eight wide column">
+            <ChatBox displayName='Harrmalik' parent={component}></ChatBox>
 
-        <h3 className="ui blue header"><i className="ui chat icon"></i>Chat Feed</h3>
-        <div className="ui divider"></div>
-
-        <div className="ui feed message">
-          <div className="event">
-              <div className="label">
-                <img src="http://lorempixel.com/100/100/people/8/"></img>
-              </div>
-              <div className="content">
-                  <div className="summary">
-                      <a className="user">
-                          Malik Harrison
-                      </a>
-                      <div className="date">
-                          @Harrmalik 34m ago
-                      </div>
-
-                  </div>
-                  <div className="extra text">
-                      This is sample text
-                  </div>
-
-                  <div className="meta">
-                      <a className="reply">
-                          <i className="reply icon"></i> 1 Replies
-                      </a>
-
-                      <a className="retweet">
-                          <i className="retweet icon"></i> 2 Reposts
-                      </a>
-
-                      <a className="like">
-                          <i className="like icon"></i> 3 Likes
-                      </a>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </article>
-    )
-  }
+            <h3 className="ui blue header"><i className="ui chat icon"></i>Chat Feed</h3>
+            <div className="ui divider"></div>
+            {
+                _.map(component.state.posts, function(post) {
+                    return (
+                        <Post
+                            key={post.id}
+                            post={post}></Post>
+                    )
+                })
+            }
+          </article>
+        )
+    }
 })
 
 export default ChatFeed
