@@ -21456,7 +21456,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -21478,33 +21478,184 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Home = _react2.default.createClass({
-	  displayName: 'Home',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_Navbar2.default, null),
-	      _react2.default.createElement(
-	        'section',
-	        { className: 'main ui grid container' },
-	        _react2.default.createElement(_UserInfoBox2.default, null),
-	        _react2.default.createElement(_ChatFeed2.default, null)
-	      ),
-	      _react2.default.createElement(
-	        'footer',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'ui inverted segment' },
-	          _react2.default.createElement(
-	            'p',
+	    displayName: 'Home',
+	    getInitialState: function getInitialState() {
+	        return {
+	            loggedIn: false,
+	            user: {
+	                username: "harrmalik",
+	                password: "password"
+	            }
+	        };
+	    },
+	    componentWillMount: function componentWillMount() {
+	        var component = this;
+	        component.checkIfLogged();
+	    },
+	    checkIfLogged: function checkIfLogged() {
+	        var component = this;
+	        var headers = new Headers();
+	        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+	        fetch('/login', { method: 'POST', body: JSON.stringify(this.state.user), headers: headers }).then(function (response) {
+	            if (response.status == 200) return response.json();else throw new Error('Something went wrong on api server!');
+	        }).then(function (data) {
+	            component.setState({ loggedIn: true });
+	        }).catch(function (error) {
+	            console.error(error);
+	        });
+	    },
+	    loggedIn: function loggedIn() {
+	        return _react2.default.createElement(
+	            'div',
 	            null,
-	            'Chat Application 2016'
-	          )
-	        )
-	      )
-	    );
-	  }
+	            _react2.default.createElement(_Navbar2.default, null),
+	            _react2.default.createElement(
+	                'section',
+	                { className: 'main ui grid container' },
+	                _react2.default.createElement(_UserInfoBox2.default, null),
+	                _react2.default.createElement(_ChatFeed2.default, null)
+	            ),
+	            _react2.default.createElement(
+	                'footer',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'ui inverted segment' },
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Chat Application 2016'
+	                    )
+	                )
+	            )
+	        );
+	    },
+	    loggedOut: function loggedOut() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_Navbar2.default, null),
+	            _react2.default.createElement(
+	                'section',
+	                { className: 'main ui grid container' },
+	                _react2.default.createElement(
+	                    'article',
+	                    { className: 'six wide column' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        { className: 'ui header' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'sub header' },
+	                            'Hello There'
+	                        ),
+	                        'Log in to view and create awesome posts'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'article',
+	                    { className: 'ten wide column' },
+	                    _react2.default.createElement(
+	                        'form',
+	                        { className: 'ui form fluid segment piled blue' },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            { className: 'ui dividing header' },
+	                            'Log in'
+	                        ),
+	                        _react2.default.createElement('p', { className: 'text-warning' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'two fields' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'required field' },
+	                                _react2.default.createElement(
+	                                    'label',
+	                                    null,
+	                                    'Username'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'ui icon input' },
+	                                    _react2.default.createElement('input', { type: 'text', placeholder: 'Username' }),
+	                                    _react2.default.createElement('i', { className: 'user icon' })
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'required field' },
+	                                _react2.default.createElement(
+	                                    'label',
+	                                    null,
+	                                    'Password'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'ui icon input' },
+	                                    _react2.default.createElement('input', { type: 'password', placeholder: 'Password' }),
+	                                    _react2.default.createElement('i', { className: 'lock icon' })
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'ui error message' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'header' },
+	                                'We noticed some issues'
+	                            )
+	                        ),
+	                        _react2.default.createElement('input', { type: 'submit', value: 'Log in', className: 'ui button blue' }),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/#/register', className: 'ui button ' },
+	                            'Register'
+	                        ),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'ui facebook button', href: '/facebook/callback' },
+	                            _react2.default.createElement('i', { className: 'facebook icon' }),
+	                            'Facebook'
+	                        ),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'ui twitter button', href: '/twitter' },
+	                            _react2.default.createElement('i', { className: 'twitter icon' }),
+	                            'Twitter'
+	                        ),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'ui google plus button', href: '/logingoogle' },
+	                            _react2.default.createElement('i', { className: 'google plus icon' }),
+	                            'Google Plus'
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'footer',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'ui inverted segment' },
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Chat Application 2016'
+	                    )
+	                )
+	            )
+	        );
+	    },
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            this.state.loggedIn ? this.loggedIn() : this.loggedOut()
+	        );
+	    }
 	});
 
 	exports.default = Home;
